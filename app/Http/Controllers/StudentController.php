@@ -15,17 +15,19 @@ class StudentController extends Controller
         $this->studentRepo = $studentRepo;
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('admin.student.manage', ['students' => $this->studentRepo->showAll()]);
+        // $student = Student::where('name', $request->student_name)->get();
+        return view('admin.student.manage');
+    }
+    public function searchByname(Request $request)
+    {
+        
+        $student = Student::where('name', $request->student_name)->get();
+        return view('admin.student.manage', ['student' => $student ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         return view('admin.student.create');

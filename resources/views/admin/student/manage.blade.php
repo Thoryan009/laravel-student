@@ -8,10 +8,18 @@
 
 
 
-            <div class="px-5 py-4 sm:px-6 sm:py-5">
+            <div class=" flex gap-8 px-5 py-4 sm:px-6 sm:py-5">
                 <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
                     Basic Table 1
                 </h3>
+                <div>
+                    <form action="{{route('student.search')}}" method="post">
+
+                        @csrf
+                        <input type="text" placeholder="Search Student name" name="student_name">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
             <p class="text-center text-green-500 text-2xl">{{session('message')}}</p>
             <div class="border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6">
@@ -55,8 +63,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($students as $student )
+                                @if(isset($student))
+                                @foreach ($student as $student )
                                 
+                                    
+                              
                                 <tr class="border-b border-gray-100 dark:border-gray-800">
                                     <td class="px-5 py-4 sm:px-6" colspan="1">
                                         <span
@@ -93,8 +104,11 @@
                                     </td>
                                     
                                 </tr>
-                               
-                                @endforeach
+                              
+
+
+@endforeach
+@endif
                             </tbody>
                         </table>
                     </div>

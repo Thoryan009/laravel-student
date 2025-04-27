@@ -15,4 +15,5 @@ Route::middleware([
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('/students', StudentController::class);
+    Route::post('/', [StudentController::class, 'searchByname'])->name('student.search');
 });
