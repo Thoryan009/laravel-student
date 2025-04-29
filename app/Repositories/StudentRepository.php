@@ -10,11 +10,10 @@ class StudentRepository implements StudentRepositoryInterface
     public function create($request)
     {
       return  Student::newStudent($request);
-
     }
     public function showAll()
     {
-        return Student::latest()->get();
+        return Student::latest();
     }
     public function show($student)
     {
@@ -27,5 +26,9 @@ class StudentRepository implements StudentRepositoryInterface
     public function delete($id )
     {
         return Student::deleteStudent($id->id);
+    }
+    public function searchByName($request)
+    {
+        return Student::where('name','like', "%{$request->student_name}%")->orWhere('email', 'like', "%{$request->student_name}%")->paginate(2);
     }
 }

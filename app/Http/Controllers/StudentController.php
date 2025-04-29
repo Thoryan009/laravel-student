@@ -15,18 +15,21 @@ class StudentController extends Controller
         $this->studentRepo = $studentRepo;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         // $student = Student::where('name', $request->student_name)->get();
+
+        if($request->student_name)
+        {
+            // $this->studentRepo->searchByName($request);
+            return view('admin.student.manage', ['students' => $this->studentRepo->searchByName($request)]);
+        }
+
+        else{
+            return view('admin.student.manage', ['students' => $this->studentRepo->showAll()]);
+        }
         return view('admin.student.manage');
     }
-    public function searchByname(Request $request)
-    {
-        
-        $student = Student::where('name', $request->student_name)->get();
-        return view('admin.student.manage', ['student' => $student ]);
-    }
-
     
     public function create()
     {
@@ -56,6 +59,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
+        // return $student->currentPage();
         return view('admin.student.edit', ['student' => $this->studentRepo->show($student)]);
     }
 
@@ -64,8 +68,14 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
+       
         $this->studentRepo->update( $student, $request);
-        return redirect('/students')->with('message', 'Student Info Updated Successfully');
+
+        $page = $request->input('page', 1);
+       
+
+        return redirect()->route('students.index', ['page' => $page])
+        ->with('message', 'Student Info Updated Successfully');
     }
 
     /**

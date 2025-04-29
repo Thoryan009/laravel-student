@@ -9,4 +9,5 @@ interface StudentRepositoryInterface
     public function show($student);
     public function update($id, $request);
     public function delete($id);
+    public function searchByName($request);
 }

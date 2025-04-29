@@ -170,12 +170,10 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                         <ul class="mb-6 flex flex-col gap-4">
                             <!-- Menu Item Dashboard -->
                             <li>
-                                <a href="#"
-                                    @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')"
+                                <a href="{{route('dashboard')}}"
+                                
                                     class="menu-item group"
-                                    :class="(selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics' ||
-                                        page === 'marketing' || page === 'crm' || page === 'stocks' ||
-                                        page === 'saas') ? 'menu-item-active' : 'menu-item-inactive'">
+                                   >
                                     <svg :class="(selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics' ||
                                         page === 'marketing' || page === 'crm' || page === 'stocks') ?
                                     'menu-item-icon-active' : 'menu-item-icon-inactive'"
@@ -190,112 +188,10 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                         Dashboard
                                     </span>
 
-                                    <svg class="menu-item-arrow"
-                                        :class="[(selected === 'Dashboard') ? 'menu-item-arrow-active' :
-                                            'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : ''
-                                        ]"
-                                        width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585" stroke=""
-                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
+                                   
                                 </a>
 
-                                <!-- Dropdown Menu Start -->
-                                <div class="translate transform overflow-hidden"
-                                    :class="(selected === 'Dashboard') ? 'block' : 'hidden'">
-                                    <ul :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                                        class="menu-dropdown mt-2 flex flex-col gap-1 pl-9">
-                                        <li>
-                                            <a href="index.html" class="menu-dropdown-item group"
-                                                :class="page === 'ecommerce' ? 'menu-dropdown-item-active' :
-                                                    'menu-dropdown-item-inactive'">
-                                                eCommerce
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="analytics.html" class="menu-dropdown-item group"
-                                                :class="page === 'analytics' ? 'menu-dropdown-item-active' :
-                                                    'menu-dropdown-item-inactive'">
-                                                Analytics
-                                                <span class="absolute right-3 flex items-center gap-1">
-                                                    <span class="menu-dropdown-badge"
-                                                        :class="page === 'analytics' ? 'menu-dropdown-badge-active' :
-                                                            'menu-dropdown-badge-inactive'">
-                                                        Pro
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="menu-dropdown-item group" href="marketing.html"
-                                                :class="page === 'marketing' ? 'menu-dropdown-item-active' :
-                                                    'menu-dropdown-item-inactive'">
-                                                Marketing
-                                                <span class="absolute right-3 flex items-center gap-1">
-                                                    <span class="menu-dropdown-badge"
-                                                        :class="page === 'marketing' ? 'menu-dropdown-badge-active' :
-                                                            'menu-dropdown-badge-inactive'">
-                                                        Pro
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="crm.html" class="menu-dropdown-item group"
-                                                :class="page === 'crm' ? 'menu-dropdown-item-active' :
-                                                    'menu-dropdown-item-inactive'">
-                                                CRM
-                                                <span class="absolute right-3 flex items-center gap-1">
-                                                    <span class="menu-dropdown-badge"
-                                                        :class="page === 'crm' ? 'menu-dropdown-badge-active' :
-                                                            'menu-dropdown-badge-inactive'">
-                                                        Pro
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="stocks.html" class="menu-dropdown-item group"
-                                                :class="page === 'stocks' ? 'menu-dropdown-item-active' :
-                                                    'menu-dropdown-item-inactive'">
-                                                Stocks
-                                                <span class="absolute right-3 flex items-center gap-1">
-                                                    <span class="menu-dropdown-badge"
-                                                        :class="page === 'stocks' ? 'menu-dropdown-badge-active' :
-                                                            'menu-dropdown-badge-inactive'">
-                                                        New
-                                                    </span>
-                                                    <span class="menu-dropdown-badge"
-                                                        :class="page === 'stocks' ? 'menu-dropdown-badge-active' :
-                                                            'menu-dropdown-badge-inactive'">
-                                                        Pro
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="saas.html" class="menu-dropdown-item group"
-                                                :class="page === 'saas' ? 'menu-dropdown-item-active' :
-                                                    'menu-dropdown-item-inactive'">
-                                                SaaS
-                                                <span class="absolute right-3 flex items-center gap-1">
-                                                    <span class="menu-dropdown-badge"
-                                                        :class="page === 'saas' ? 'menu-dropdown-badge-active' :
-                                                            'menu-dropdown-badge-inactive'">
-                                                        New
-                                                    </span>
-                                                    <span class="menu-dropdown-badge"
-                                                        :class="page === 'saas' ? 'menu-dropdown-badge-active' :
-                                                            'menu-dropdown-badge-inactive'">
-                                                        Pro
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- Dropdown Menu End -->
+                           
                             </li>
 
                             <!-- Menu Item Dashboard -->
@@ -834,7 +730,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                         <img src="{{asset('/')}}admin_assets/src/images/user/owner.jpg" alt="User" />
                                     </span>
 
-                                    <span class="mr-1 block text-theme-sm font-medium"> Musharof </span>
+                                    <span class="mr-1 block text-theme-sm font-medium"> {{Auth()->user()->name}}</span>
 
                                     <svg :class="dropdownOpen && 'rotate-180'"
                                         class="stroke-gray-500 dark:stroke-gray-400" width="18" height="20"
@@ -940,6 +836,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
 data-cf-beacon='{"rayId":"936d073b4e946034","version":"2025.4.0-1-g37f21b1","r":1,"serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"67f7a278e3374824ae6dd92295d38f77","b":1}'
 crossorigin="anonymous"></script>
+
 </body>
 
 <!-- Mirrored from demo.tailadmin.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 27 Apr 2025 08:43:13 GMT -->

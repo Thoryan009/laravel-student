@@ -24,9 +24,9 @@
 
                                     <div class="mt-5 flex items-end justify-between">
                                         <div>
-                                            <span class="text-sm text-gray-500 dark:text-gray-400">Customers</span>
+                                            <span class="text-sm text-gray-500 dark:text-gray-400">Students</span>
                                             <h4 class="mt-2 text-title-sm font-bold text-gray-800 dark:text-white/90">
-                                                3,782
+                                               {{$count}}
                                             </h4>
                                         </div>
 
@@ -62,9 +62,9 @@
 
                                     <div class="mt-5 flex items-end justify-between">
                                         <div>
-                                            <span class="text-sm text-gray-500 dark:text-gray-400">Orders</span>
+                                            <span class="text-sm text-gray-500 dark:text-gray-400">Total Users</span>
                                             <h4 class="mt-2 text-title-sm font-bold text-gray-800 dark:text-white/90">
-                                                5,359
+                                               {{$users}}
                                             </h4>
                                         </div>
 
